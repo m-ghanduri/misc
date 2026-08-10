@@ -1,0 +1,17 @@
+#!/usr/bin/env python3
+
+#this code is an exercise from the python for genomic data science course
+#the task is to build a dictionary containing all sequences form a FASTA file
+
+def FASTA_dict(fasta_file):
+        fasta=open(fasta_file,'r') #this allows us to read the fasta file
+        fasta_dictionary={}     #this sets up the fasta dictionary
+        for line in fasta:      #this loop will go through all lines in our inp>
+                if line[:1]=='>': #this line will make sure that the only lines>
+                        fasta_dictionary[line.rstrip()]=fasta.readline().rstrip>
+        fasta.close() #this closes the input file so we free up memory
+        return fasta_dictionary #this returns but does not print our dictionary
+
+fasta_input = input("gimme bingus file: ") #this asks the user for the file
+output=FASTA_dict(fasta_input) #this passes the input into the FASTA_dict funct>
+print(output) #this will output the function return
